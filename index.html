@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seenath Homemade Pickles | Kannur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body { font-family: 'Poppins', sans-serif; }
+
+        /* Jar Art Styles */
+        .jar-body {
+            position: relative; width: 80px; height: 100px;
+            border-radius: 10px; margin: 0 auto; overflow: hidden;
+            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2);
+        }
+        .jar-lid {
+            width: 86px; height: 15px; background: #d4a017;
+            margin: 0 auto; border-radius: 4px; position: relative;
+            top: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 10;
+        }
+        .jar-label {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 60px; height: 40px;
+            background: white; border: 1px solid #ddd;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px; text-align: center; font-weight: bold;
+            color: #333; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .pattern-bg {
+            background-color: #fefce8;
+            background-image: radial-gradient(#166534 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="pattern-bg text-gray-800 flex flex-col min-h-screen pb-20">
+
+    <!-- Navigation -->
+    <nav class="bg-green-800 text-yellow-50 shadow-lg sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <!-- Logo will be displayed here -->
+                <img id="site-logo" src="" alt="Seenath Pickles Logo" class="w-10 h-10 rounded-full object-cover border-2 border-yellow-400 p-0.5 hidden" onerror="this.classList.add('hidden'); document.getElementById('default-icon').classList.remove('hidden');">
+                <!-- Fallback icon -->
+                <i id="default-icon" data-lucide="utensils-crossed" class="w-7 h-7 text-yellow-400"></i>
+                <div>
+                    <h1 class="text-xl font-bold leading-tight">Seenath Pickles</h1>
+                    <p class="text-xs text-green-200">Homemade Taste of Kannur</p>
+                </div>
+            </div>
+            <button onclick="toggleCart()" class="relative p-2 bg-yellow-500 rounded-full text-green-900 hover:bg-yellow-400 transition-colors">
+                <i data-lucide="shopping-bag"></i>
+                <span id="nav-cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full hidden">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-green-700 text-white py-10 px-4 text-center relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold mb-2 text-yellow-300">Spicy & Authentic</h2>
+            <p class="text-green-100 mb-4">No preservatives, just pure traditional taste.</p>
+            <div class="inline-flex items-center gap-2 bg-green-900/50 px-4 py-1 rounded-full text-sm">
+                <i data-lucide="map-pin" class="w-4 h-4 text-yellow-400"></i> Chakkarakkal, Kannur
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        
+        <!-- Pricing Banner -->
+        <div class="bg-white p-4 rounded-xl shadow-sm mb-6 border-l-4 border-yellow-500 flex justify-between items-center">
+            <div>
+                <h3 class="font-bold text-green-800">Standard Prices</h3>
+                <p class="text-xs text-gray-500">For all varieties</p>
+            </div>
+            <div class="text-right">
+                <span class="block text-sm font-bold text-green-700">Small: ₹50</span>
+                <span class="block text-sm font-bold text-green-700">Large: ₹100</span>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Rendered by JS -->
+        </div>
+
+    </main>
+
+    <!-- Sticky Mobile Footer for Cart Summary -->
+    <div id="sticky-footer" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-30 hidden md:hidden flex justify-between items-center">
+        <div>
+            <p class="text-xs text-gray-500">Total</p>
+            <p class="text-xl font-bold text-green-800" id="sticky-total">₹0</p>
+        </div>
+        <button onclick="toggleCart()" class="bg-green-600 text-white px-6 py-2 rounded-lg font-bold shadow-lg flex items-center gap-2">
+            View Cart <i data-lucide="chevron-up" class="w-4 h-4"></i>
+        </button>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm" onclick="toggleCart()"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full" id="cart-panel">
+            
+            <!-- Cart Header -->
+            <div class="bg-green-800 text-white p-4 flex justify-between items-center shadow-md">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                    <i data-lucide="shopping-cart"></i> Your Order
+                </h2>
+                <button onclick="toggleCart()" class="p-1 hover:bg-green-700 rounded">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            
+            <!-- Cart Items -->
+            <div class="flex-grow overflow-y-auto p-4 bg-gray-50" id="cart-items">
+                <!-- Items injected here -->
+            </div>
+
+            <!-- Cart Footer -->
+            <div class="border-t border-gray-200 p-6 bg-white shadow-[0_-4px_15px_rgba(0,0,0,0.05)]">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-lg text-gray-600">Total Amount:</span>
+                    <span id="cart-total" class="text-2xl font-bold text-green-800">₹0</span>
+                </div>
+                <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95">
+                    <i data-lucide="message-circle" class="w-6 h-6"></i> Order via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full shadow-xl z-[100] transition-opacity duration-300 opacity-0 pointer-events-none flex items-center gap-2 text-sm whitespace-nowrap">
+        <i data-lucide="check-circle" class="text-green-400 w-5 h-5"></i>
+        <span id="toast-message">Item added</span>
+    </div>
+
+    <script>
+        // ====================================================================
+        // === PASTE YOUR LOGO URL HERE ===
+        // 
+        // 1. Upload your logo to a public image hosting service (e.g., Imgur, Cloudinary, etc.)
+        // 2. Get the direct image link (it should end in .png, .jpg, or .svg).
+        // 3. Paste the URL inside the quotes below.
+        //    If the URL is empty or invalid, the default pickle icon will show.
+        // ====================================================================
+        const LOGO_URL = "https://drive.google.com/file/d/1RFurE42kWA1_gZWiVPwUhg_7GtQncYW9/view?usp=drive_link"; 
+        // Example: "https://example.com/images/seenath_logo.png"
+
+        // --- Configuration ---
+        const PHONE_NUMBER = "918606512883"; // International format, no '+'
+
+        // --- Data ---
+        const products = [
+            { id: 1, name: "Gooseberry Pickle", malayalam: "Nellikka", color: "#84cc16", desc: "Tangy gooseberries" },
+            { id: 2, name: "Mango & Carrot", malayalam: "Manga Carrot", color: "#f97316", desc: "Crunchy mix" },
+            { id: 3, name: "Lemon Pickle (Yellow)", malayalam: "Naranga (Manja)", color: "#eab308", desc: "Salted lemon" },
+            { id: 4, name: "Lemon Pickle (Red)", malayalam: "Naranga (Chuvappu)", color: "#dc2626", desc: "Spicy chilly lemon" }
+        ];
+
+        // State
+        let cart = []; 
+        let selections = {}; 
+
+        // --- Initialization ---
+        function init() {
+            // Load Logo
+            if (LOGO_URL) {
+                const logoImg = document.getElementById('site-logo');
+                const defaultIcon = document.getElementById('default-icon');
+                logoImg.src = LOGO_URL;
+                logoImg.classList.remove('hidden');
+                defaultIcon.classList.add('hidden');
+
+                // Fallback check (already in HTML, but here for clarity)
+                logoImg.onerror = function() {
+                    logoImg.classList.add('hidden');
+                    defaultIcon.classList.remove('hidden');
+                }
+            }
+
+
+            const grid = document.getElementById('product-grid');
+            
+            products.forEach(p => {
+                // Default selection for logic
+                selections[p.id] = 'small';
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden flex flex-col";
+                card.innerHTML = `
+                    <div class="bg-gray-50 p-6 flex justify-center items-center relative">
+                        <div class="jar-lid"></div>
+                        <div class="jar-body" style="background-color: ${p.color};">
+                            <div class="jar-label"><span class="block leading-tight text-[10px]">Seenath<br>Pickles</span></div>
+                        </div>
+                        <span class="absolute top-2 right-2 bg-green-100 text-green-800 text-[10px] font-bold px-2 py-1 rounded-md uppercase">${p.malayalam}</span>
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-bold text-gray-800">${p.name}</h3>
+                        <p class="text-xs text-gray-500 mb-3">${p.desc}</p>
+                        
+                        <div class="mt-auto bg-gray-100 p-1 rounded-lg flex mb-3">
+                            <button onclick="setSize(${p.id}, 'small')" id="btn-small-${p.id}" class="flex-1 text-xs py-2 rounded font-medium bg-white text-green-800 shadow-sm transition-all">Small ₹50</button>
+                            <button onclick="setSize(${p.id}, 'large')" id="btn-large-${p.id}" class="flex-1 text-xs py-2 rounded font-medium text-gray-500 hover:text-green-800 transition-all">Large ₹100</button>
+                        </div>
+
+                        <button onclick="addToCart(${p.id})" class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-2 rounded-lg flex items-center justify-center gap-2 transition-transform active:scale-95">
+                            Add +
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+                setSize(p.id, 'small'); // Initial button styling
+            });
+            lucide.createIcons();
+            updateCartUI();
+        }
+
+        // --- Logic ---
+        
+        function setSize(id, size) {
+            selections[id] = size;
+            
+            // UI Updates
+            const btnSmall = document.getElementById(`btn-small-${id}`);
+            const btnLarge = document.getElementById(`btn-large-${id}`);
+            const activeClass = ['bg-white', 'text-green-800', 'shadow-sm'];
+            const inactiveClass = ['text-gray-500', 'bg-transparent', 'shadow-none'];
+
+            if(btnSmall && btnLarge) { // Check if elements exist before manipulating classes
+                if(size === 'small') {
+                    btnSmall.classList.add(...activeClass);
+                    btnSmall.classList.remove(...inactiveClass);
+                    btnLarge.classList.remove(...activeClass);
+                    btnLarge.classList.add(...inactiveClass);
+                } else {
+                    btnLarge.classList.add(...activeClass);
+                    btnLarge.classList.remove(...inactiveClass);
+                    btnSmall.classList.remove(...activeClass);
+                    btnSmall.classList.add(...inactiveClass);
+                }
+            }
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const size = selections[productId];
+            const price = size === 'small' ? 50 : 100;
+            
+            const cartId = `${productId}-${size}`;
+            const existing = cart.find(item => item.cartId === cartId);
+            
+            if(existing) {
+                existing.quantity++;
+            } else {
+                cart.push({
+                    cartId: cartId,
+                    name: product.name,
+                    size: size,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            updateCartUI();
+            showToast(`Added ${size} ${product.name}`);
+        }
+
+        function updateCartUI() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+            // 1. Update Badges
+            const badge = document.getElementById('nav-cart-count');
+            badge.innerText = totalItems;
+            badge.classList.toggle('hidden', totalItems === 0);
+
+            // 2. Update Sticky Footer (Mobile)
+            const stickyFooter = document.getElementById('sticky-footer');
+            document.getElementById('sticky-total').innerText = `₹${total}`;
+            if(totalItems > 0) {
+                stickyFooter.classList.remove('hidden');
+                stickyFooter.classList.add('flex');
+            } else {
+                stickyFooter.classList.add('hidden');
+                stickyFooter.classList.remove('flex');
+            }
+
+            // 3. Update Modal Totals
+            document.getElementById('cart-total').innerText = `₹${total}`;
+
+            // 4. Update List
+            const list = document.getElementById('cart-items');
+            if(cart.length === 0) {
+                list.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-64 text-gray-400">
+                        <i data-lucide="shopping-basket" class="w-16 h-16 mb-4 opacity-50"></i>
+                        <p>Cart is empty</p>
+                    </div>
+                `;
+            } else {
+                list.innerHTML = cart.map(item => `
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mb-3 flex justify-between items-center">
+                        <div>
+                            <p class="font-bold text-green-900">${item.name}</p>
+                            <p class="text-xs text-gray-500 uppercase font-semibold">${item.size} Jar • ₹${item.price}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center bg-gray-100 rounded-lg">
+                                <button onclick="modQty('${item.cartId}', -1)" class="px-3 py-1 hover:bg-gray-200 text-green-800 rounded-l-lg">-</button>
+                                <span class="text-sm font-bold w-4 text-center">${item.quantity}</span>
+                                <button onclick="modQty('${item.cartId}', 1)" class="px-3 py-1 hover:bg-gray-200 text-green-800 rounded-r-lg">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            lucide.createIcons();
+        }
+
+        function modQty(cartId, delta) {
+            const item = cart.find(i => i.cartId === cartId);
+            if(item) {
+                item.quantity += delta;
+                if(item.quantity <= 0) {
+                    cart = cart.filter(i => i.cartId !== cartId);
+                }
+                updateCartUI();
+            }
+        }
+
+        function checkoutWhatsApp() {
+            if(cart.length === 0) {
+                 showToast("Add items before ordering!");
+                 return;
+            }
+
+            let message = "Hello Seenath Pickles! I would like to order:\n\n";
+            let finalTotal = 0;
+
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                finalTotal += subtotal;
+                message += `▪️ ${item.quantity} x ${item.name} (${item.size}) - ₹${subtotal}\n`;
+            });
+
+            message += `\n*Total Payable: ₹${finalTotal}*`;
+            message += "\n\nPlease confirm order. My address is:";
+
+            const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+            
+            window.location.href = url;
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            const panel = document.getElementById('cart-panel');
+            
+            if(modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => panel.classList.remove('translate-x-full'), 10);
+            } else {
+                panel.classList.add('translate-x-full');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            t.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => t.classList.add('opacity-0', 'pointer-events-none'), 2000);
+        }
+
+        // Run Init
+        init();
+
+    </script>
+</body>
+</html>
