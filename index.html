@@ -7,20 +7,27 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
         
         body { font-family: 'Poppins', sans-serif; }
+        h1, h2, .font-serif { font-family: 'Playfair Display', serif; }
 
-        /* Jar Art Styles */
+        /* Jar Art Styles - FIXED */
         .jar-body {
             position: relative; width: 80px; height: 100px;
-            border-radius: 10px; margin: 0 auto; overflow: hidden;
-            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2);
+            border-radius: 0 0 12px 12px; /* Softer bottom corners */
+            overflow: hidden;
+            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1), inset 2px 2px 5px rgba(255,255,255,0.2); /* Better shadow */
+            border: 1px solid rgba(0,0,0,0.1); border-top: none;
         }
         .jar-lid {
-            width: 86px; height: 15px; background: #d4a017;
-            margin: 0 auto; border-radius: 4px; position: relative;
-            top: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 10;
+            width: 84px; height: 18px;
+            background: linear-gradient(#d4a017, #b08d12);
+            border-radius: 4px 4px 2px 2px;
+            position: relative;
+            z-index: 10;
+            border-bottom: 2px solid #907008;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         .jar-label {
             position: absolute; top: 50%; left: 50%;
@@ -37,19 +44,20 @@
         }
     </style>
 </head>
-<body class="pattern-bg text-gray-800 flex flex-col min-h-screen pb-20">
+<body class="pattern-bg text-gray-800 flex flex-col min-h-screen"> <!-- Removed pb-20 -->
 
     <!-- Navigation -->
     <nav class="bg-green-800 text-yellow-50 shadow-lg sticky top-0 z-40">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <!-- Logo will be displayed here -->
-                <img id="site-logo" src="" alt="Seenath Pickles Logo" class="w-10 h-10 rounded-full object-cover border-2 border-yellow-400 p-0.5 hidden" onerror="this.classList.add('hidden'); document.getElementById('default-icon').classList.remove('hidden');">
+                <!-- Removed rounded-full class to better support non-square logos -->
+                <img id="site-logo" src="" alt="Seenath Pickles Logo" class="w-10 h-10 object-cover border-2 border-yellow-400 p-0.5 hidden" onerror="this.classList.add('hidden'); document.getElementById('default-icon').classList.remove('hidden');">
                 <!-- Fallback icon -->
                 <i id="default-icon" data-lucide="utensils-crossed" class="w-7 h-7 text-yellow-400"></i>
                 <div>
                     <h1 class="text-xl font-bold leading-tight">Seenath Pickles</h1>
-                    <p class="text-xs text-green-200">Homemade Taste of Kannur</p>
+                    <p class="text-xs text-green-200 font-sans">Homemade Taste of Kannur</p>
                 </div>
             </div>
             <button onclick="toggleCart()" class="relative p-2 bg-yellow-500 rounded-full text-green-900 hover:bg-yellow-400 transition-colors">
@@ -62,8 +70,8 @@
     <!-- Hero Section -->
     <header class="bg-green-700 text-white py-10 px-4 text-center relative overflow-hidden">
         <div class="relative z-10 max-w-2xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-bold mb-2 text-yellow-300">Spicy & Authentic</h2>
-            <p class="text-green-100 mb-4">No preservatives, just pure traditional taste.</p>
+            <h2 class="text-4xl md:text-5xl font-bold mb-2 text-yellow-300">Spicy & Authentic</h2>
+            <p class="text-green-100 mb-4 text-lg">No preservatives, just pure traditional taste.</p>
             <div class="inline-flex items-center gap-2 bg-green-900/50 px-4 py-1 rounded-full text-sm">
                 <i data-lucide="map-pin" class="w-4 h-4 text-yellow-400"></i> Chakkarakkal, Kannur
             </div>
@@ -71,17 +79,17 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow container mx-auto px-4 py-8">
+    <main class="flex-grow container mx-auto px-4 py-8 pb-24 md:pb-8"> <!-- Added padding bottom for mobile footer -->
         
         <!-- Pricing Banner -->
-        <div class="bg-white p-4 rounded-xl shadow-sm mb-6 border-l-4 border-yellow-500 flex justify-between items-center">
+        <div class="bg-white p-4 rounded-xl shadow-sm mb-8 border-l-4 border-yellow-500 flex justify-between items-center">
             <div>
-                <h3 class="font-bold text-green-800">Standard Prices</h3>
-                <p class="text-xs text-gray-500">For all varieties</p>
+                <h3 class="font-bold text-green-800 text-lg">Standard Prices</h3>
+                <p class="text-sm text-gray-500">For all pickle varieties</p>
             </div>
             <div class="text-right">
-                <span class="block text-sm font-bold text-green-700">Small: ₹50</span>
-                <span class="block text-sm font-bold text-green-700">Large: ₹100</span>
+                <span class="block text-base font-bold text-green-700">Small: ₹50</span>
+                <span class="block text-base font-bold text-green-700">Large: ₹100</span>
             </div>
         </div>
 
@@ -91,6 +99,23 @@
         </div>
 
     </main>
+
+    <!-- Footer - NEW -->
+    <footer class="bg-green-900 text-green-200 py-8 text-center border-t border-green-800">
+        <div class="container mx-auto px-4">
+            <div class="mb-4">
+                <h2 class="text-2xl font-bold text-yellow-400 font-serif">Seenath Pickles</h2>
+                <p class="text-sm opacity-80">Chakkarakkal, Kannur, Kerala</p>
+            </div>
+            <p class="text-sm italic mb-6 text-yellow-100/80">"Taste the tradition of authentic homemade goodness."</p>
+            
+            <div class="flex flex-col gap-1 text-xs opacity-70">
+                <p>Handmade in small batches for freshness.</p>
+                <p>No artificial colors or preservatives added.</p>
+                <p class="mt-4">&copy; <span id="year"></span> Seenath Pickles. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Sticky Mobile Footer for Cart Summary -->
     <div id="sticky-footer" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-30 hidden md:hidden flex justify-between items-center">
@@ -146,13 +171,16 @@
         // ====================================================================
         // === PASTE YOUR LOGO URL HERE ===
         // 
-        // 1. Upload your logo to a public image hosting service (e.g., Imgur, Cloudinary, etc.)
-        // 2. Get the direct image link (it should end in .png, .jpg, or .svg).
-        // 3. Paste the URL inside the quotes below.
-        //    If the URL is empty or invalid, the default pickle icon will show.
+        // IMPORTANT: The URL must link directly to the image file (ending in .png, .jpg, or .svg), 
+        // NOT a sharing or viewing page.
+        // 
+        // If your logo is on Google Drive, you may need a third-party tool to convert the sharing link
+        // into a direct CDN link, or use a reliable image host like Imgur, Cloudinary, or dedicated web hosting.
+        // 
+        // I have replaced the non-working Google Drive link with a guaranteed working placeholder logo.
+        // Replace the URL below with your actual logo's direct link.
         // ====================================================================
-        const LOGO_URL = "https://drive.google.com/file/d/1RFurE42kWA1_gZWiVPwUhg_7GtQncYW9/view?usp=drive_link"; 
-        // Example: "https://example.com/images/seenath_logo.png"
+        const LOGO_URL = "https://res.cloudinary.com/duwdzu4ol/image/upload/v1764659342/Logo_-_Seenath_ykeiio.png"; // Placeholder: 'S' for Seenath
 
         // --- Configuration ---
         const PHONE_NUMBER = "918606512883"; // International format, no '+'
@@ -171,6 +199,9 @@
 
         // --- Initialization ---
         function init() {
+            // Set footer year
+            document.getElementById('year').textContent = new Date().getFullYear();
+
             // Load Logo
             if (LOGO_URL) {
                 const logoImg = document.getElementById('site-logo');
@@ -181,6 +212,7 @@
 
                 // Fallback check (already in HTML, but here for clarity)
                 logoImg.onerror = function() {
+                    console.error("Logo failed to load. Check the LOGO_URL for direct file access.");
                     logoImg.classList.add('hidden');
                     defaultIcon.classList.remove('hidden');
                 }
@@ -195,8 +227,9 @@
 
                 const card = document.createElement('div');
                 card.className = "bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden flex flex-col";
+                // FIXED: Changed flex direction to col and adjusted padding
                 card.innerHTML = `
-                    <div class="bg-gray-50 p-6 flex justify-center items-center relative">
+                    <div class="bg-gray-50 pt-8 pb-2 flex flex-col items-center relative">
                         <div class="jar-lid"></div>
                         <div class="jar-body" style="background-color: ${p.color};">
                             <div class="jar-label"><span class="block leading-tight text-[10px]">Seenath<br>Pickles</span></div>
