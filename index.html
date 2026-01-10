@@ -397,11 +397,11 @@
             window.location.href = url;
         }
 
-        function toggleCart() {
+        function setModalState(isOpen) {
             const modal = document.getElementById('cart-modal');
             const panel = document.getElementById('cart-panel');
             
-            if(modal.classList.contains('hidden')) {
+            if (isOpen) {
                 modal.classList.remove('hidden');
                 setTimeout(() => panel.classList.remove('translate-x-full'), 10);
             } else {
@@ -409,6 +409,33 @@
                 setTimeout(() => modal.classList.add('hidden'), 300);
             }
         }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            const isHidden = modal.classList.contains('hidden');
+            
+            if (isHidden) {
+                // Opening handling
+                history.pushState({modal: 'cart'}, '', '#cart');
+                setModalState(true);
+            } else {
+                // Closing handling
+                // Instead of directly closing, we go back in history.
+                // This triggers popstate, which will handle the closing.
+                // We check if we have a state to go back to, or just go back.
+                // For this simple flow, history.back() handles 'undoing' the pushState.
+                history.back();
+            }
+        }
+
+        // Handle Back Button / Swipe
+        window.addEventListener('popstate', (event) => {
+            const modal = document.getElementById('cart-modal');
+            // If the cart is open when popstate fires (meaning we went back), close it.
+            if (!modal.classList.contains('hidden')) {
+                setModalState(false);
+            }
+        });
 
         function showToast(msg) {
             const t = document.getElementById('toast');
