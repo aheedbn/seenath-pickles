@@ -1,44 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seenath Homemade Pickles | Kannur</title>
     <!-- ADDED Meta Description for SEO snippet -->
-    <meta name="description" content="Order authentic homemade pickles from Kannur, Kerala. We offer traditional Gooseberry, Mango, and Lemon pickles with no preservatives. Order online via WhatsApp.">
+    <meta name="description"
+        content="Order authentic homemade pickles from Kannur, Kerala. We offer traditional Gooseberry, Mango, and Lemon pickles with no preservatives. Order online via WhatsApp.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
-        
-        body { font-family: 'Poppins', sans-serif; }
-        h1, h2, .font-serif { font-family: 'Playfair Display', serif; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1,
+        h2,
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
 
         /* Jar Art Styles - FIXED */
         .jar-body {
-            position: relative; width: 80px; height: 100px;
-            border-radius: 0 0 12px 12px; /* Softer bottom corners */
+            position: relative;
+            width: 80px;
+            height: 100px;
+            border-radius: 0 0 12px 12px;
+            /* Softer bottom corners */
             overflow: hidden;
-            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1), inset 2px 2px 5px rgba(255,255,255,0.2); /* Better shadow */
-            border: 1px solid rgba(0,0,0,0.1); border-top: none;
+            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.1), inset 2px 2px 5px rgba(255, 255, 255, 0.2);
+            /* Better shadow */
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-top: none;
         }
+
         .jar-lid {
-            width: 84px; height: 18px;
+            width: 84px;
+            height: 18px;
             background: linear-gradient(#d4a017, #b08d12);
             border-radius: 4px 4px 2px 2px;
             position: relative;
             z-index: 10;
             border-bottom: 2px solid #907008;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
+
         .jar-label {
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%); width: 60px; height: 40px;
-            background: white; border: 1px solid #ddd;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 10px; text-align: center; font-weight: bold;
-            color: #333; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 40px;
+            background: white;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         .pattern-bg {
             background-color: #fefce8;
             background-image: radial-gradient(#166534 0.5px, transparent 0.5px);
@@ -46,25 +74,24 @@
         }
     </style>
 </head>
+
 <body class="pattern-bg text-gray-800 flex flex-col min-h-screen"> <!-- Removed pb-20 -->
 
     <!-- Navigation -->
     <nav class="bg-green-800 text-yellow-50 shadow-lg sticky top-0 z-40">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <!-- Logo will be displayed here -->
-                <!-- Removed rounded-full class to better support non-square logos -->
-                <img id="site-logo" src="" alt="Seenath Pickles Logo" class="w-10 h-10 object-cover border-2 border-yellow-400 p-0.5 hidden" onerror="this.classList.add('hidden'); document.getElementById('default-icon').classList.remove('hidden');">
-                <!-- Fallback icon -->
-                <i id="default-icon" data-lucide="utensils-crossed" class="w-7 h-7 text-yellow-400"></i>
+                <!-- Logo Removed as per request -->
                 <div>
-                    <h1 class="text-xl font-bold leading-tight">Seenath Pickles</h1>
+                    <h1 class="text-xl font-bold leading-tight">Seenath Homemade Pickles</h1>
                     <p class="text-xs text-green-200 font-sans">Homemade Taste of Kannur</p>
                 </div>
             </div>
-            <button onclick="toggleCart()" class="relative p-2 bg-yellow-500 rounded-full text-green-900 hover:bg-yellow-400 transition-colors">
+            <button onclick="toggleCart()"
+                class="relative p-2 bg-yellow-500 rounded-full text-green-900 hover:bg-yellow-400 transition-colors">
                 <i data-lucide="shopping-bag"></i>
-                <span id="nav-cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full hidden">0</span>
+                <span id="nav-cart-count"
+                    class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full hidden">0</span>
             </button>
         </div>
     </nav>
@@ -75,26 +102,18 @@
             <!-- UPDATED H2 FOR LOCAL SEO -->
             <h2 class="text-4xl md:text-5xl font-bold mb-2 text-yellow-300">Authentic Homemade Pickles from Kannur</h2>
             <p class="text-green-100 mb-4 text-lg">No preservatives, just pure traditional taste.</p>
-            <div class="inline-flex items-center gap-2 bg-green-900/50 px-4 py-1 rounded-full text-sm">
+            <a href="https://maps.app.goo.gl/4yUzxzi2tRNHCdDR6" target="_blank"
+                class="inline-flex items-center gap-2 bg-green-900/50 px-4 py-1 rounded-full text-sm hover:bg-green-800 transition-colors">
                 <i data-lucide="map-pin" class="w-4 h-4 text-yellow-400"></i> Chakkarakkal, Kannur
-            </div>
+            </a>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="flex-grow container mx-auto px-4 py-8 pb-24 md:pb-8"> <!-- Added padding bottom for mobile footer -->
-        
+
         <!-- Pricing Banner -->
-        <div class="bg-white p-4 rounded-xl shadow-sm mb-8 border-l-4 border-yellow-500 flex justify-between items-center">
-            <div>
-                <h3 class="font-bold text-green-800 text-lg">Standard Prices</h3>
-                <p class="text-sm text-gray-500">For all pickle varieties</p>
-            </div>
-            <div class="text-right">
-                <span class="block text-base font-bold text-green-700">Small: ₹50</span>
-                <span class="block text-base font-bold text-green-700">Large: ₹100</span>
-            </div>
-        </div>
+
 
         <!-- Products Grid -->
         <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -111,7 +130,7 @@
                 <p class="text-sm opacity-80">Chakkarakkal, Kannur, Kerala</p>
             </div>
             <p class="text-sm italic mb-6 text-yellow-100/80">"Taste the tradition of authentic homemade goodness."</p>
-            
+
             <div class="flex flex-col gap-1 text-xs opacity-70">
                 <p>Handmade in small batches for freshness.</p>
                 <p>No artificial colors or preservatives added.</p>
@@ -121,12 +140,14 @@
     </footer>
 
     <!-- Sticky Mobile Footer for Cart Summary -->
-    <div id="sticky-footer" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-30 hidden md:hidden flex justify-between items-center">
+    <div id="sticky-footer"
+        class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-30 hidden md:hidden flex justify-between items-center">
         <div>
             <p class="text-xs text-gray-500">Total</p>
             <p class="text-xl font-bold text-green-800" id="sticky-total">₹0</p>
         </div>
-        <button onclick="toggleCart()" class="bg-green-600 text-white px-6 py-2 rounded-lg font-bold shadow-lg flex items-center gap-2">
+        <button onclick="toggleCart()"
+            class="bg-green-600 text-white px-6 py-2 rounded-lg font-bold shadow-lg flex items-center gap-2">
             View Cart <i data-lucide="chevron-up" class="w-4 h-4"></i>
         </button>
     </div>
@@ -134,8 +155,9 @@
     <!-- Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 z-50 hidden">
         <div class="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm" onclick="toggleCart()"></div>
-        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full" id="cart-panel">
-            
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full"
+            id="cart-panel">
+
             <!-- Cart Header -->
             <div class="bg-green-800 text-white p-4 flex justify-between items-center shadow-md">
                 <h2 class="text-xl font-bold flex items-center gap-2">
@@ -145,7 +167,7 @@
                     <i data-lucide="x"></i>
                 </button>
             </div>
-            
+
             <!-- Cart Items -->
             <div class="flex-grow overflow-y-auto p-4 bg-gray-50" id="cart-items">
                 <!-- Items injected here -->
@@ -153,11 +175,13 @@
 
             <!-- Cart Footer -->
             <div class="border-t border-gray-200 p-6 bg-white shadow-[0_-4px_15px_rgba(0,0,0,0.05)]">
+                <p class="text-xs text-gray-500 mb-3 text-center italic">Delivery charge will be applicable</p>
                 <div class="flex justify-between items-center mb-6">
                     <span class="text-lg text-gray-600">Total Amount:</span>
                     <span id="cart-total" class="text-2xl font-bold text-green-800">₹0</span>
                 </div>
-                <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95">
+                <button onclick="checkoutWhatsApp()"
+                    class="w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95">
                     <i data-lucide="message-circle" class="w-6 h-6"></i> Order via WhatsApp
                 </button>
             </div>
@@ -165,41 +189,77 @@
     </div>
 
     <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full shadow-xl z-[100] transition-opacity duration-300 opacity-0 pointer-events-none flex items-center gap-2 text-sm whitespace-nowrap">
+    <div id="toast"
+        class="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full shadow-xl z-[100] transition-opacity duration-300 opacity-0 pointer-events-none flex items-center gap-2 text-sm whitespace-nowrap">
         <i data-lucide="check-circle" class="text-green-400 w-5 h-5"></i>
         <span id="toast-message">Item added</span>
     </div>
 
     <script>
-        // ====================================================================
-        // === PASTE YOUR LOGO URL HERE ===
-        // 
-        // IMPORTANT: The URL must link directly to the image file (ending in .png, .jpg, or .svg), 
-        // NOT a sharing or viewing page.
-        // 
-        // If your logo is on Google Drive, you may need a third-party tool to convert the sharing link
-        // into a direct CDN link, or use a reliable image host like Imgur, Cloudinary, or dedicated web hosting.
-        // 
-        // I have replaced the non-working Google Drive link with a guaranteed working placeholder logo.
-        // Replace the URL below with your actual logo's direct link.
-        // ====================================================================
-        const LOGO_URL = "https://res.cloudinary.com/duwdzu4ol/image/upload/v1764659342/Logo_-_Seenath_ykeiio.png"; // Placeholder: 'S' for Seenath
-
         // --- Configuration ---
         const PHONE_NUMBER = "918606512883"; // International format, no '+'
 
         // --- Data ---
         const products = [
-            // UPDATED DESCRIPTIONS FOR SEO
-            { id: 1, name: "Gooseberry Pickle", malayalam: "Nellikka", color: "#84cc16", desc: "Our traditional Kerala-style Gooseberry Pickle (Nellikka Achar) is made with fresh ingredients for a perfect tangy and spicy taste. A healthy side dish." },
-            { id: 2, name: "Mango & Carrot", malayalam: "Manga Carrot", color: "#f97316", desc: "A crunchy and delicious mixed pickle featuring raw mango and fresh carrots. Prepared in the authentic Kannur style, ideal with rice and curries." },
-            { id: 3, name: "Lemon Pickle (Yellow)", malayalam: "Naranga (Manja)", color: "#eab308", desc: "Classic, sun-dried salted lemon pickle (Naranga Achar) in a tangy, mild brine. Perfect for calming the stomach and enhancing any meal." },
-            { id: 4, name: "Lemon Pickle (Red)", malayalam: "Naranga (Chuvappu)", color: "#dc2626", desc: "A fiery red lemon pickle, packed with ground chili and spice. A strong, spicy flavor for those who love intense South Indian taste. Zero preservatives." }
+            {
+                id: 1,
+                name: "Gooseberry & Dates Pickle",
+                malayalam: "നെല്ലിക്ക ഈന്തപ്പഴം",
+                color: "#ea580c",
+                priceSmall: 50,
+                priceLarge: 100,
+                desc: "A delightful fusion of tangy gooseberries and sweet dates (Nellikka Eenthappazham). A perfect balance of sweet, sour, and spicy traditional flavors."
+            },
+            {
+                id: 2,
+                name: "Mango & Carrot Pickle",
+                malayalam: "മാങ്ങ കാരറ്റ്",
+                color: "#f97316",
+                priceSmall: 50,
+                priceLarge: 100,
+                desc: "Crunchy raw mango and fresh carrots blended with aromatic spices. This Manga Carrot achar offers a unique texture and authentic Kannur taste."
+            },
+            {
+                id: 3,
+                name: "Lemon & Kanthari Pickle (Yellow)",
+                malayalam: "നാരങ്ങ കാന്താരി (മഞ്ഞ)",
+                color: "#eab308",
+                priceSmall: 50,
+                priceLarge: 100,
+                desc: "Sun-dried yellow lemons paired with spicy bird's eye chili (Kanthari). A traditional Naranga Achar with a fiery kick and zest."
+            },
+            {
+                id: 4,
+                name: "Lemon & Dates Pickle (Red)",
+                malayalam: "നാരങ്ങ ഈന്തപ്പഴം (ചുവപ്പ്)",
+                color: "#dc2626",
+                priceSmall: 50,
+                priceLarge: 100,
+                desc: "Spicy red lemon pickle enriched with sweet dates. A rich, thick Naranga Eenthappazham pickle that is both heat-packed and slightly sweet."
+            },
+            {
+                id: 5,
+                name: "Pineapple & Carrot Pickle",
+                malayalam: "പൈനാപ്പിൾ കാരറ്റ്",
+                color: "#facc15",
+                priceSmall: 70,
+                priceLarge: 150,
+                desc: "Exotic pineapple chunks meets crunchy carrots. A sweet and spicy tropical delicacy that adds a burst of flavor to any meal."
+            },
+            {
+                id: 6,
+                name: "Beetroot, Carrot & Dates Pickle",
+                malayalam: "ബീറ്റ്റൂട്ട്, കാരറ്റ്, ഈന്തപ്പഴം",
+                color: "#db2777",
+                priceSmall: 50,
+                priceLarge: 100,
+                desc: "A colorful and nutritious mix of beetroot, carrot, and dates. This unique combination offers a rich, earthy sweetness with traditional spices."
+            }
         ];
 
         // State
-        let cart = []; 
-        let selections = {}; 
+        let cart = [];
+        let selections = {};
 
         // --- Initialization ---
         function init() {
@@ -207,24 +267,16 @@
             document.getElementById('year').textContent = new Date().getFullYear();
 
             // Load Logo
+            // Load Logo - Removed as per request
+            /*
             if (LOGO_URL) {
-                const logoImg = document.getElementById('site-logo');
-                const defaultIcon = document.getElementById('default-icon');
-                logoImg.src = LOGO_URL;
-                logoImg.classList.remove('hidden');
-                defaultIcon.classList.add('hidden');
-
-                // Fallback check (already in HTML, but here for clarity)
-                logoImg.onerror = function() {
-                    console.error("Logo failed to load. Check the LOGO_URL for direct file access.");
-                    logoImg.classList.add('hidden');
-                    defaultIcon.classList.remove('hidden');
-                }
+                 ... code removed ...
             }
+            */
 
 
             const grid = document.getElementById('product-grid');
-            
+
             products.forEach(p => {
                 // Default selection for logic
                 selections[p.id] = 'small';
@@ -245,8 +297,8 @@
                         <p class="text-xs text-gray-500 mb-3">${p.desc}</p>
                         
                         <div class="mt-auto bg-gray-100 p-1 rounded-lg flex mb-3">
-                            <button onclick="setSize(${p.id}, 'small')" id="btn-small-${p.id}" class="flex-1 text-xs py-2 rounded font-medium bg-white text-green-800 shadow-sm transition-all">Small ₹50</button>
-                            <button onclick="setSize(${p.id}, 'large')" id="btn-large-${p.id}" class="flex-1 text-xs py-2 rounded font-medium text-gray-500 hover:text-green-800 transition-all">Large ₹100</button>
+                            <button onclick="setSize(${p.id}, 'small')" id="btn-small-${p.id}" class="flex-1 text-[10px] md:text-xs py-2 rounded font-medium bg-white text-green-800 shadow-sm transition-all text-center leading-tight">Small (200g)<br>₹${p.priceSmall}</button>
+                            <button onclick="setSize(${p.id}, 'large')" id="btn-large-${p.id}" class="flex-1 text-[10px] md:text-xs py-2 rounded font-medium text-gray-500 hover:text-green-800 transition-all text-center leading-tight">Large (500g)<br>₹${p.priceLarge}</button>
                         </div>
 
                         <button onclick="addToCart(${p.id})" class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-2 rounded-lg flex items-center justify-center gap-2 transition-transform active:scale-95">
@@ -262,18 +314,18 @@
         }
 
         // --- Logic ---
-        
+
         function setSize(id, size) {
             selections[id] = size;
-            
+
             // UI Updates
             const btnSmall = document.getElementById(`btn-small-${id}`);
             const btnLarge = document.getElementById(`btn-large-${id}`);
             const activeClass = ['bg-white', 'text-green-800', 'shadow-sm'];
             const inactiveClass = ['text-gray-500', 'bg-transparent', 'shadow-none'];
 
-            if(btnSmall && btnLarge) { // Check if elements exist before manipulating classes
-                if(size === 'small') {
+            if (btnSmall && btnLarge) { // Check if elements exist before manipulating classes
+                if (size === 'small') {
                     btnSmall.classList.add(...activeClass);
                     btnSmall.classList.remove(...inactiveClass);
                     btnLarge.classList.remove(...activeClass);
@@ -290,12 +342,12 @@
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             const size = selections[productId];
-            const price = size === 'small' ? 50 : 100;
-            
+            const price = size === 'small' ? product.priceSmall : product.priceLarge;
+
             const cartId = `${productId}-${size}`;
             const existing = cart.find(item => item.cartId === cartId);
-            
-            if(existing) {
+
+            if (existing) {
                 existing.quantity++;
             } else {
                 cart.push({
@@ -306,7 +358,7 @@
                     quantity: 1
                 });
             }
-            
+
             updateCartUI();
             showToast(`Added ${size} ${product.name}`);
         }
@@ -323,7 +375,7 @@
             // 2. Update Sticky Footer (Mobile)
             const stickyFooter = document.getElementById('sticky-footer');
             document.getElementById('sticky-total').innerText = `₹${total}`;
-            if(totalItems > 0) {
+            if (totalItems > 0) {
                 stickyFooter.classList.remove('hidden');
                 stickyFooter.classList.add('flex');
             } else {
@@ -336,7 +388,7 @@
 
             // 4. Update List
             const list = document.getElementById('cart-items');
-            if(cart.length === 0) {
+            if (cart.length === 0) {
                 list.innerHTML = `
                     <div class="flex flex-col items-center justify-center h-64 text-gray-400">
                         <i data-lucide="shopping-basket" class="w-16 h-16 mb-4 opacity-50"></i>
@@ -365,9 +417,9 @@
 
         function modQty(cartId, delta) {
             const item = cart.find(i => i.cartId === cartId);
-            if(item) {
+            if (item) {
                 item.quantity += delta;
-                if(item.quantity <= 0) {
+                if (item.quantity <= 0) {
                     cart = cart.filter(i => i.cartId !== cartId);
                 }
                 updateCartUI();
@@ -375,9 +427,9 @@
         }
 
         function checkoutWhatsApp() {
-            if(cart.length === 0) {
-                 showToast("Add items before ordering!");
-                 return;
+            if (cart.length === 0) {
+                showToast("Add items before ordering!");
+                return;
             }
 
             let message = "Hello Seenath Pickles! I would like to order:\n\n";
@@ -393,14 +445,14 @@
             message += "\n\nPlease confirm order. My address is:";
 
             const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
-            
+
             window.location.href = url;
         }
 
         function setModalState(isOpen) {
             const modal = document.getElementById('cart-modal');
             const panel = document.getElementById('cart-panel');
-            
+
             if (isOpen) {
                 modal.classList.remove('hidden');
                 setTimeout(() => panel.classList.remove('translate-x-full'), 10);
@@ -413,10 +465,10 @@
         function toggleCart() {
             const modal = document.getElementById('cart-modal');
             const isHidden = modal.classList.contains('hidden');
-            
+
             if (isHidden) {
                 // Opening handling
-                history.pushState({modal: 'cart'}, '', '#cart');
+                history.pushState({ modal: 'cart' }, '', '#cart');
                 setModalState(true);
             } else {
                 // Closing handling
@@ -449,4 +501,5 @@
 
     </script>
 </body>
+
 </html>
